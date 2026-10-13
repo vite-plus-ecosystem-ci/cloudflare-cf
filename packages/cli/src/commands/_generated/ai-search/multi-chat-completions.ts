@@ -102,7 +102,7 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 		.option("ai-search-options-retrieval-keyword-match-mode", {
 			type: "string",
 			description:
-				"Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
+				"Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 			choices: ["and", "or"],
 		})
 		.coerce("ai-search-options-retrieval-keyword-match-mode", (value) =>

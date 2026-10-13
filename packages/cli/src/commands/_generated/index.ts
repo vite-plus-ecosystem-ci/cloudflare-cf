@@ -1045,7 +1045,7 @@ export const generatedCommands: GeneratedCommand[] = [
 			() => import("./request-tracers/index.js"),
 			null
 		),
-		hideCommand: true,
+		hideCommand: false,
 	},
 	{
 		command: lazyCommand<CommonYargsOptions>(

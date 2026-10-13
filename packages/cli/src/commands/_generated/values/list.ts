@@ -62,6 +62,7 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 				"load_balancer_monitor",
 				"load_balancer_pool",
 				"managed_client_certificate",
+				"namespace_worker",
 				"pages_project",
 				"queue",
 				"r2_bucket",

@@ -55,6 +55,7 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 				"kv_namespace",
 				"load_balancer_monitor",
 				"load_balancer_pool",
+				"namespace_worker",
 				"pages_project",
 				"queue",
 				"r2_bucket",
