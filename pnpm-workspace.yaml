@@ -15,6 +15,23 @@ blockExoticSubdeps: true
 # exclusions independent of the current package versions so Dependabot can
 # install a newly published batch without editing this list each time.
 minimumReleaseAgeExclude:
+  # ecosystem-ci smoke test: preview builds and freshly pinned toolchain packages
+  - vite-plus
+  - "@voidzero-dev/*"
+  - "@oxc-project/*"
+  - oxlint
+  - "@oxlint/*"
+  - oxfmt
+  - "@oxfmt/*"
+  - oxlint-tsgolint
+  - "@oxlint-tsgolint/*"
+  - vitest
+  - "@vitest/*"
+  - tinybench
+  - yuku-core
+  - yuku-parser
+  - "@yuku-core/*"
+  - "@yuku-toolchain/*"
   - "@cloudflare/*"
   - miniflare
   - workerd
