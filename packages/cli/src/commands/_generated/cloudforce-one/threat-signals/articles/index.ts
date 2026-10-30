@@ -1,8 +1,11 @@
+import $aggregaterelevance from "./aggregate-relevance.js";
+import $aggregateseverity from "./aggregate-severity.js";
 import $bulkmarkread from "./bulk-mark-read.js";
 import $getcontent from "./get-content.js";
 import $get from "./get.js";
 import $list from "./list.js";
 import $markread from "./mark-read.js";
+import $reprocess from "./reprocess.js";
 import $skills from "./skills/index.js";
 import $tags from "./tags/index.js";
 import type { CommonYargsOptions } from "#lib/cli-types.js";
@@ -18,11 +21,14 @@ const command: CommandModule<CommonYargsOptions> = {
 
 	builder: (yargs) => {
 		return yargs
+			.command($aggregaterelevance)
+			.command($aggregateseverity)
 			.command($bulkmarkread)
 			.command($get)
 			.command($getcontent)
 			.command($list)
 			.command($markread)
+			.command($reprocess)
 			.command($skills)
 			.command($tags)
 			.demandCommand(1, "Please specify a subcommand");
