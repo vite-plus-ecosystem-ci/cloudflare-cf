@@ -1,0 +1,6 @@
+---
+"cf": minor
+---
+
+Update the generated command surface for Forge OpenAPI release
+`15ac0d2e3d0c91428f37b5678c168c1c2b3146b0`.
