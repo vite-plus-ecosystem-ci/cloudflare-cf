@@ -21,7 +21,7 @@ import { runWithTelemetry } from "#lib/telemetry/index.js";
 function builder(yargs: Argv<CommonYargsOptions>) {
 	return yargs
 		.usage(
-			"$0 realtime kit meetings active kick <meeting-id>\n\nKicks one or more participants from an active session using user ID or custom participant ID."
+			"$0 realtime kit meetings active kick <meeting-id>\n\nKicks one or more participants from an active session using their participant IDs. Every connection of each participant is removed from the session."
 		)
 		.positional("meeting-id", {
 			type: "string",
@@ -33,15 +33,11 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 			description: "The app identifier tag.",
 			demandOption: true,
 		})
-		.option("custom-participant-ids", {
-			type: "string",
-			array: true,
-			description: "The custom_participant_ids field",
-		})
 		.option("participant-ids", {
 			type: "string",
 			array: true,
-			description: "The participant_ids field",
+			description:
+				"IDs of the participants to kick, as returned when the participants were added to the meeting.",
 		})
 		.option("dry-run", {
 			type: "boolean",
@@ -51,7 +47,7 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 		.option("body", {
 			type: "string",
 			description:
-				"Request body for kicking participants from an active session. At least one of \`participant_ids\` or \`custom_participant_ids\` must contain a value.",
+				"Request body for kicking participants from an active session.",
 		});
 }
 
@@ -86,7 +82,6 @@ const command: CommandModule<CommonYargsOptions, Args> = {
 							argv.body !== undefined
 								? parseBody(argv.body)
 								: compactBody({
-										custom_participant_ids: argv["custom-participant-ids"],
 										participant_ids: argv["participant-ids"],
 									}),
 					});
@@ -111,10 +106,14 @@ const command: CommandModule<CommonYargsOptions, Args> = {
 					formatOutput(result, { successLabel: `Created` });
 					return;
 				}
+				if (argv["participant-ids"] === undefined) {
+					throw new Error(
+						"--participant-ids is required (or pass --body with this field set)."
+					);
+				}
 
 				// Assemble request body from individual flags
 				const bodyData = compactBody({
-					custom_participant_ids: argv["custom-participant-ids"],
 					participant_ids: argv["participant-ids"],
 				});
 				const result = await withProgress(`Creating`, async () =>

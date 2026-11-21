@@ -98,7 +98,7 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 		.option("origin-worker-id", {
 			type: "string",
 			description:
-				'Optional Worker script tag (worker ID) to use as the application\'s origin. Only supported for TCP applications with traffic_type "worker"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be "off" or "flexible".',
+				'Optional Worker script tag (worker ID) to use as the application\'s origin. Requires traffic_type "worker"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be "off" or "flexible"; UDP applications require tls "off".',
 		})
 		.option("protocol", {
 			type: "string",
@@ -156,7 +156,6 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 		.implies("origin-dns-ttl", ["traffic-type"])
 		.implies("origin-dns-type", ["traffic-type"])
 		.implies("origin-port", ["traffic-type"])
-		.implies("origin-worker-id", ["traffic-type"])
 		.implies("proxy-protocol", ["traffic-type"])
 		.implies("tls", ["traffic-type"])
 		.implies("virtual-network-id", ["traffic-type"]);
