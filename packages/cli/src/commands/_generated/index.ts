@@ -347,15 +347,6 @@ export const generatedCommands: GeneratedCommand[] = [
 	},
 	{
 		command: lazyCommand<CommonYargsOptions>(
-			"custom-csrs",
-			"custom-csrs",
-			() => import("./custom-csrs/index.js"),
-			null
-		),
-		hideCommand: false,
-	},
-	{
-		command: lazyCommand<CommonYargsOptions>(
 			"custom-hostnames",
 			"custom-hostnames",
 			() => import("./custom-hostnames/index.js"),
@@ -368,15 +359,6 @@ export const generatedCommands: GeneratedCommand[] = [
 			"custom-nameservers",
 			"custom-nameservers",
 			() => import("./custom-nameservers/index.js"),
-			null
-		),
-		hideCommand: false,
-	},
-	{
-		command: lazyCommand<CommonYargsOptions>(
-			"custom-pages",
-			"Manage custom error and challenge pages and their assets for accounts and zones",
-			() => import("./custom-pages/index.js"),
 			null
 		),
 		hideCommand: false,
@@ -716,6 +698,15 @@ export const generatedCommands: GeneratedCommand[] = [
 	},
 	{
 		command: lazyCommand<CommonYargsOptions>(
+			"network-quality",
+			"network-quality",
+			() => import("./network-quality/index.js"),
+			null
+		),
+		hideCommand: false,
+	},
+	{
+		command: lazyCommand<CommonYargsOptions>(
 			"o11y",
 			"o11y",
 			() => import("./o11y/index.js"),
@@ -899,15 +890,6 @@ export const generatedCommands: GeneratedCommand[] = [
 			"rules",
 			"Resources used by Cloudflare rules and rulesets",
 			() => import("./rules/index.js"),
-			null
-		),
-		hideCommand: false,
-	},
-	{
-		command: lazyCommand<CommonYargsOptions>(
-			"rulesets",
-			"Versioned collections of rules that control how Cloudflare processes traffic — WAF, transform, redirect, and more",
-			() => import("./rulesets/index.js"),
 			null
 		),
 		hideCommand: false,

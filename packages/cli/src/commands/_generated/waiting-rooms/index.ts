@@ -1,4 +1,3 @@
-import $accountwaitingrooms from "./account-waiting-rooms/index.js";
 import $create from "./create.js";
 import $delete from "./delete.js";
 import $edit from "./edit.js";
@@ -28,7 +27,6 @@ const command: CommandModule<CommonYargsOptions> = {
 			.command($edit)
 			.command($get)
 			.command($update)
-			.command($accountwaitingrooms)
 			.command($events)
 			.command($page)
 			.command($rules)
